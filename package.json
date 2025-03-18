@@ -12,7 +12,6 @@
     "@libsql/client": "^0.15.0",
     "better-sqlite3": "^11.9.1",
     "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.40.1",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -24,6 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.30.5",
+    "drizzle-orm": "^0.40.1",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "tailwindcss": "^4",
