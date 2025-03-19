@@ -2,11 +2,14 @@ import Image from "next/image";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import Header from "@/components/Header";
 import UserCard from "@/components/UserCard";
+import { getUserByMail } from "@/db/services/users";
 
 export default async function Home() {
   // const { userId } = await auth();
   const user = await currentUser();
   console.log(user);
+  const userTest = await getUserByMail("test@example.com");
+  console.log(userTest)
   return (
     <div className="">
       <main className="h-screen w-screen bg-slate-50">
