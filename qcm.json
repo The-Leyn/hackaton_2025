@@ -2,12 +2,12 @@
 {
 "question": "What is the capital of the European Union?",
 "options": ["Paris", "Brussels", "Berlin", "Strasbourg"],
-"answer": "Brussels"
+"answer": ["Brussels"]
 },
 {
 "question": "Which is the largest country in the EU by area?",
 "options": ["Spain", "Germany", "France", "Italy"],
-"answer": "France"
+r""answe: "France"
 },
 {
 "question": "What is the role of the European Parliament?",
