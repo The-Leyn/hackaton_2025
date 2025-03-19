@@ -8,3 +8,10 @@ export const gamesTable = pgTable("games_table", {
     information: varchar({ length: 255 }).notNull(),
     data_game: jsonb().default({})
 });
+
+export const usersTable = pgTable("users_table", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    mail: varchar({ length: 255 }).notNull(),
+    country: varchar({ length: 255 }).notNull(),
+    global_score: integer().default(0),
+});

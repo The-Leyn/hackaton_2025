@@ -10,6 +10,10 @@ export async function getGameById(id: number) {
   return await db.select().from(gamesTable).where(eq(gamesTable.id, id));
 }
 
+export async function getDataGameById(id: number) {
+  return await db.select({ data_game: gamesTable.data_game }).from(gamesTable).where(eq(gamesTable.id, id)); 
+}
+
 export async function createGame(gameData: typeof gamesTable.$inferInsert) {
   return await db.insert(gamesTable).values(gameData).returning();
 }
