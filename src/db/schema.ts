@@ -1,8 +1,10 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, pgTable, varchar, jsonb } from "drizzle-orm/pg-core";
+import { json } from "stream/consumers";
 
-export const gamesTable = sqliteTable("games_table", {
-    id: int().primaryKey({ autoIncrement: true }),
-    name: text().notNull(),
-    type: text().notNull(),
-    information: text().notNull(),
-  });
+export const gamesTable = pgTable("games_table", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    name: varchar({ length: 255 }).notNull(),
+    type: varchar({ length: 255 }).notNull(),
+    information: varchar({ length: 255 }).notNull(),
+    data_game: jsonb().default({})
+});

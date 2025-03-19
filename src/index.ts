@@ -1,20 +1,21 @@
 import 'dotenv/config';
-import { drizzle } from 'drizzle-orm/libsql';
+import { drizzle } from 'drizzle-orm/postgres-js';
 import { eq } from 'drizzle-orm';
 import { gamesTable } from './db/schema';
-  
-const db = drizzle(process.env.DB_FILE_NAME!);
+
+const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {
   const game: typeof gamesTable.$inferInsert = {
-    name: 'QCM of europe',
+    name: 'QCM primary',
     type: 'QCM',
-    information: 'global QCM',
+    information: 'you must correctly answer the questions in this game !',
   };
 
   await db.insert(gamesTable).values(game);
   console.log('New game created!')
 
+  // SELECT * FROM gamesTable
   const games = await db.select().from(gamesTable);
   console.log('Getting all games from the database: ', games)
   /*
@@ -29,12 +30,13 @@ async function main() {
   await db
     .update(gamesTable)
     .set({
-      type: "find Words",
+      name: "QCM secondary",
     })
-    .where(eq(gamesTable.name, game.type));
+    // WHERE gamesTable.name = 'QCM primary'
+    .where(eq(gamesTable.name, "QCM primary"));
   console.log('game info updated!')
 
-  await db.delete(gamesTable).where(eq(gamesTable.name, game.type));
+  await db.delete(gamesTable).where(eq(gamesTable.name, "QCM secondary"));
   console.log('game deleted!')
 }
 
