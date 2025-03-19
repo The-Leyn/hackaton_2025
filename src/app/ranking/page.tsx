@@ -17,7 +17,7 @@ export default function InternationalRanking() {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await fetch('/api/users');
+                const response = await fetch('');
                 const data = await response.json();
                 // Tri des utilisateurs par points (ordre décroissant)
                 const sortedUsers = data.sort((a: User, b: User) => b.points - a.points);
