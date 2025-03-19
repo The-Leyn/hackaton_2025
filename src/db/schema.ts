@@ -10,8 +10,7 @@ export const gamesTable = pgTable("games_table", {
 });
 
 export const usersTable = pgTable("users_table", {
-    id: integer().primaryKey().generatedAlwaysAsIdentity(),
-    mail: varchar({ length: 255 }).notNull(),
+    mail: varchar({ length: 255 }).notNull().primaryKey(),
     country: varchar({ length: 255 }).notNull(),
     global_score: integer().default(0),
 });

@@ -11,7 +11,7 @@ export async function updateGlobalScore(mail: string, score: number) {
     .update(usersTable)
     .set({ global_score: sql`${usersTable.global_score} + ${score}` })
     .where(eq(usersTable.mail, mail))
-};
+}
 
 export async function getUserByMail(mail: string) {
   return await db.select().from(usersTable).where(eq(usersTable.mail, mail));
