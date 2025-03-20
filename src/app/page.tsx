@@ -1,43 +1,26 @@
 import Image from "next/image";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import Header from "@/components/Header";
 import UserCard from "@/components/UserCard";
-import ProgressBar from "@/components/ProgressBar";
-import QandA from "@/components/QandA";
-import questionsData from '@/db/scripts/questions.json';
+import { getUserByMail } from "@/db/services/users";
 
-
-// export default function Page() {
-//   return (
-//     <main className="flex justify-center items-center min-h-screen bg-gray-50">
-//       <UserCard
-//         name="Amaury"
-//         country="France"
-//         points={2500}
-//         rank={13}
-//       />
-//     </main>
-//   );
-// }
-
-// export default function QuizPage() {
-//   // Exemple : 8 questions répondues sur 12
-//   const currentAnswered = 9;
-//   const totalQuestions = 24;
-
-//   return (
-//     <main className="min-h-screen bg-purple-900 flex items-center justify-center p-4">
-//       <ProgressBar total={totalQuestions} />
-//     </main>
-//   );
-// }
-
-
-
-export default function HomePage() {
+export default async function Home() {
+  // const { userId } = await auth();
+  const user = await currentUser();
+  console.log(user);
+  const userTest = await getUserByMail("test@example.com");
+  console.log(userTest)
   return (
-    <main className="h-screen bg-gray-200">
-      <QandA questions={questionsData} />
-    </main>
+    <div className="">
+      <main className="h-screen w-screen bg-slate-50">
+        <Header title={"EUNIFY"} subtitle="Welcome to" isVisible={false} >
+          <UserCard name={user?.fullName || ""} country="France" points={780} rank={10} image={user?.imageUrl} />
+        </Header>
+        <p className="text-black font-extralight">Hello</p>
+        <p className="font-poppins text-black">Hello</p>
+        <p className="text-black">Hello</p>
+        <p className="font-syncopate text-black">Hello</p>
+      </main>
+    </div>
   );
 }
-
-

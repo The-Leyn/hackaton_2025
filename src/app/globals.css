@@ -10,6 +10,17 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-poppins: var(--font-poppins-400);
+  --font-syncopate: var(--font-syncopate-400);
+
+  --color-hackatonWhite-400: #F3F1F9;
+  --color-hackatonGold-400: #E9C823;
+  --color-hackatonGoldDark-400: #534709;
+  --color-hackatonPervenche-400: #BFB7FB;
+  --color-hackatonPervencheLight-400: #E9E6FF;
+  --color-hackatonPervencheDark-400: #140045;
+  --color-hackatonBlack-400: #070119;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +33,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins) Arial, Helvetica, sans-serif;
 }
