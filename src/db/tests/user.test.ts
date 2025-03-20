@@ -15,6 +15,16 @@ const sampleUser = {
   country: 'France',
   global_score: 10, // Valeur initiale pour tester l'update
 };
+const sampleUser2 = {
+  mail: 'test2@example.com',
+  country: 'France',
+  global_score: 10, // Valeur initiale pour tester l'update
+};
+const sampleUser3 = {
+  mail: 'test3@example.com',
+  country: 'France',
+  global_score: 10, // Valeur initiale pour tester l'update
+};
 
 // Test des fonctions utilisateurs
 describe('User functions', () => {
@@ -50,6 +60,8 @@ describe('User functions', () => {
   // Test de réinitialisation de tous les scores globaux
   it('should reset all global scores to 0', async () => {
     await createUser(sampleUser);
+    await createUser(sampleUser2);
+    await createUser(sampleUser3);
     await createUser({ mail: 'second@example.com', country: 'Canada', global_score: 20 });
 
     await removeAllGlobalScore(); // Remet tous les scores à 0

@@ -9,6 +9,7 @@ async function main() {
   const game: typeof gamesTable.$inferInsert = {
     name: 'QCM primary',
     type: 'QCM',
+    category: 'General',
     information: 'you must correctly answer the questions in this game !',
   };
 
