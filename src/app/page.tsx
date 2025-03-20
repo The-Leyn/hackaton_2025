@@ -2,10 +2,9 @@ import Image from "next/image";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import Header from "@/components/Header";
 import UserCard from "@/components/UserCard";
-import { createUser, getUserByMail } from '@/db/services/users'; 
+import { createUser, getUserByMail, getUserRankByMail,updateGlobalScore } from '@/db/services/users'; 
 import { getAllGames } from "@/db/services/games";
 import Link from "next/link";
-import { updateGlobalScore } from "@/db/services/users";
 export async function setUserScore(score: number) {
   const user = await currentUser();
   const userEmail = user?.emailAddresses[0].emailAddress
@@ -33,7 +32,9 @@ export default async function Home() {
   }
   
   const userEmail = user.emailAddresses?.[0]?.emailAddress;
-  
+  const currentUserInfo = await getUserByMail(userEmail);
+  const globalScore = currentUserInfo?.global_score ?? 0;
+  const rankPosition = await getUserRankByMail(userEmail);
   if (!userEmail) {
     throw new Error("L'utilisateur n'a pas d'adresse e-mail.");
   }
@@ -66,7 +67,8 @@ export default async function Home() {
     // <div className="">
       <main className="h-screen w-screen bg-slate-50 flex flex-col">
         <Header title={"EUNIFY"} subtitle="Welcome to" isVisible={false}>
-          <UserCard name={user?.fullName || ""} country="France" points={780} rank={10} image={user?.imageUrl} />
+          {/* <UserCard name={user?.fullName || ""} country="France" points={780} rank={10} image={user?.imageUrl} /> */}
+          <UserCard name={user?.fullName || ""} country="France" points={globalScore} rank={rankPosition} image={user?.imageUrl} />
         </Header>
         <div className=" p-6 h-full pb-[80px] overflow-scroll">
           <h1 className="font-medium text-lg text-hackatonPervencheDark-400 uppercase mb-4">Games</h1>
