@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { useUser } from "@clerk/nextjs";
 // import { updateGlobalScore } from "@/db/services/users";
 import { setUserScore } from "@/app/setScore";
 interface QuestionItem {

@@ -2,7 +2,6 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { db } from '../lib/db';
 import { gamesTable } from '../schema';
 import { getAllGames, getGameById, getDataGameById, createGame, updateGame, deleteGame } from '../services/games';
-import { eq } from 'drizzle-orm';
 
 // Nettoyage avant chaque test
 beforeEach(async () => {
@@ -14,7 +13,6 @@ const sampleGame = {
   name: 'Test Game',
   category: 'Category 1',
   type: 'RPG',
-  category: 'General',
   information: 'A test game',
   data_game: { level: 1, score: 100 },
 };

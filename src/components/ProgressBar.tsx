@@ -1,7 +1,4 @@
 "use client";
-
-import React, { useState } from "react";
-
 interface ProgressBarProps {
   total: number;
   current: number;

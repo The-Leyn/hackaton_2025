@@ -11,7 +11,7 @@ interface HeaderProps {
   children?: ReactNode;
 }
 
-export default function Header({ title, subtitle, isVisible, titleGame = null, children }: HeaderProps) {
+export default function Header({ title, subtitle, isVisible, children }: HeaderProps) {
   return (
     <header className="bg-hackatonPervencheDark-400 text-hackatonWhite-400 py-8 px-6 rounded-b-3xl gap-6 flex flex-col relative">
       <div>
@@ -21,11 +21,7 @@ export default function Header({ title, subtitle, isVisible, titleGame = null, c
         {isVisible && (
           <>
             <Link href={"/"} className="absolute left-4 top-[42px] transform -translate-y-1/2 text-white">
-              {/* <button */}
-              {/* onClick={() => window.history.back()} // Retour à la page précédente */}
-
               <ChevronLeft size={24} />
-              {/* </button> */}
             </Link>
           </>
         )}

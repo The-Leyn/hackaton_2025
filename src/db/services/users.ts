@@ -30,7 +30,7 @@ export async function removeAllGlobalScore() {
 }
 
 export async function getUserRankByMail(mail: string): Promise<number> {
-  const result = (await db.execute(
+  const _result = (await db.execute(
     sql`
       SELECT rank FROM (
         SELECT mail, RANK() OVER (ORDER BY global_score DESC) as rank
@@ -40,6 +40,6 @@ export async function getUserRankByMail(mail: string): Promise<number> {
     `
   )) as any[]; 
 
-  return Number(result[0]?.rank) || 0;
+  return Number(_result[0]?.rank) || 0;
 }
     
