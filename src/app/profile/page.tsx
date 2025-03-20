@@ -1,6 +1,4 @@
-import Image from "next/image";
-import { auth, currentUser } from "@clerk/nextjs/server";
-import { SignedIn, UserButton, UserProfile, SignOutButton } from "@clerk/nextjs";
+import { SignedIn, UserProfile, SignOutButton } from "@clerk/nextjs";
 import "@/app/globals.css";
 
 export default async function Home() {

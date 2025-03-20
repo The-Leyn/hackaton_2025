@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { ClerkProvider, RedirectToSignIn, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton, SignIn } from "@clerk/nextjs";
-import { Geist, Geist_Mono, Poppins, Syncopate } from "next/font/google";
+import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut} from "@clerk/nextjs";
+import { Poppins, Syncopate } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 
 const poppins = Poppins({
   weight: ["200", "300", "400"],
@@ -16,14 +16,6 @@ const syncopate = Syncopate({
   variable: "--font-syncopate-400",
   subsets: ["latin"],
 });
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Create Next App",

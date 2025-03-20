@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import UserCard from "@/components/UserCard";
-import { auth, currentUser, clerkClient } from "@clerk/nextjs/server";
+import { currentUser, clerkClient } from "@clerk/nextjs/server";
 import { getTopScores, getUserByMail, getUserRankByMail } from "@/db/services/users";
 
 export default async function page() {
