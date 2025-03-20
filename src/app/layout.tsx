@@ -38,7 +38,8 @@ export default async function RootLayout({
 
   // const { userId } = await auth();
   const user = await currentUser();
-
+  // const pathname = usePathname(); 
+  // const showNavbar = pathname !== "/game";
   return (
     <ClerkProvider>
       <html lang="en">
@@ -60,3 +61,5 @@ export default async function RootLayout({
     </ClerkProvider>
   );
 }
+
+

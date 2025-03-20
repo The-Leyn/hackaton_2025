@@ -6,7 +6,8 @@ async function seed() {
   // Insérer les jeux
   await db.insert(gamesTable).values([
     {
-      name: 'general QCM',
+      name: 'Q&A 1',
+      category: 'General',
       type: 'QCM',
       information: 'Testez vos connaissances en histoire',
       data_game: {

@@ -5,6 +5,9 @@ import { House, UserRound, Medal } from "lucide-react";
 import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
+  if (pathname.startsWith("/game")) {
+    return null; // Ne rien afficher pour la route "/game"
+  }
   return (
     <nav className="flex fixed bottom-0 bg-hackatonWhite-400 rounded-t-2xl w-full p-4 items-center justify-around">
       <Link href={`/`}>

@@ -12,6 +12,7 @@ beforeEach(async () => {
 // Jeu de données valide pour correspondre au schéma
 const sampleGame = {
   name: 'Test Game',
+  category: 'Category 1',
   type: 'RPG',
   information: 'A test game',
   data_game: { level: 1, score: 100 },
