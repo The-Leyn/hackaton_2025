@@ -12,6 +12,8 @@ export const gamesTable = pgTable("games_table", {
 
 export const usersTable = pgTable("users_table", {
     mail: varchar({ length: 255 }).notNull().primaryKey(),
+    first_name: varchar({ length: 255 }).notNull(),
+    last_name: varchar({ length: 255 }).notNull(),
     country: varchar({ length: 255 }).notNull(),
     global_score: integer().default(0),
 });

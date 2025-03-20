@@ -23,12 +23,14 @@ export default async function Home() {
   }
   
   // Vérifie si l'utilisateur existe déjà en base
-  const userMail = await getUserByMail(userEmail);
+  const userMailVerif = await getUserByMail(userEmail);
   
-  if (!userMail) {
+  if (!userMailVerif) {
     // Si l'utilisateur n'existe pas encore, on l'insère en base
     const UserData = {
       mail: userEmail,
+      first_name: user.firstName || "",
+      last_name: user.lastName || "",
       country: "France",
       global_score: 0,
     };

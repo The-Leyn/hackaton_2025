@@ -18,8 +18,8 @@ export default async function Home() {
           />
           <div className="flex justify-center items-center mt-3">
             <SignOutButton>
-              <button className="backgrounPervenche text-white font-bold py-2 px-4 rounded">
-                Se déconnecter
+              <button className="backgrounPervenche text-white font-bold py-2 px-4 rounded-xl">
+                Logout
               </button>
             </SignOutButton>
           </div>
