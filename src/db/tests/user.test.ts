@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { db } from '../lib/db';
 import { usersTable } from '../schema';
 import { createUser, updateGlobalScore, getUserByMail, removeAllGlobalScore } from '../services/users'; // Assurez-vous que le chemin est correct
-import { eq } from 'drizzle-orm';
+
 
 // Nettoyage avant chaque test
 beforeEach(async () => {

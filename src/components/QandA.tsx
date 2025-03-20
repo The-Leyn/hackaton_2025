@@ -32,7 +32,6 @@ export default function QandA({ questions, currentQuestionIndex, setCurrentQuest
   const [userAnswers, setUserAnswers] = useState<string[][]>(Array(data.length).fill([]));
 
   const currentQuestion = data[currentQuestionIndex];
-``
   console.log(`Score Actuel: ${score} !"`);
   
 
