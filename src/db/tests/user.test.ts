@@ -6,14 +6,29 @@ import { eq } from 'drizzle-orm';
 
 // Nettoyage avant chaque test
 beforeEach(async () => {
-  await db.delete(usersTable); // Réinitialiser la table avant chaque test
+  await db.delete(usersTable);
 });
 
-// Jeu de données valide
 const sampleUser = {
   mail: 'test@example.com',
+  first_name: 'Test',
+  last_name: 'User1',
   country: 'France',
-  global_score: 10, // Valeur initiale pour tester l'update
+  global_score: 110,
+};
+const sampleUser2 = {
+  mail: 'test2@example.com',
+  first_name: 'Test',
+  last_name: 'User2',
+  country: 'France',
+  global_score: 200,
+};
+const sampleUser3 = {
+  mail: 'test3@example.com',
+  first_name: 'Test',
+  last_name: 'User3',
+  country: 'France',
+  global_score: 0,
 };
 
 // Test des fonctions utilisateurs
@@ -32,9 +47,9 @@ describe('User functions', () => {
     await createUser(sampleUser);
     const user = await getUserByMail(sampleUser.mail);
 
-    expect(user.length).toBe(1);
-    expect(user[0].mail).toBe(sampleUser.mail);
-    expect(user[0].country).toBe(sampleUser.country);
+    expect(user).not.toBeNull(); // Vérifie qu'on a bien un utilisateur
+    expect(user!.mail).toBe(sampleUser.mail);
+    expect(user!.country).toBe(sampleUser.country);
   });
 
   // Test de mise à jour du score global
@@ -43,14 +58,15 @@ describe('User functions', () => {
     await updateGlobalScore(sampleUser.mail, 5); // Ajouter 5 points
 
     const user = await getUserByMail(sampleUser.mail);
-    expect(user.length).toBe(1);
-    expect(user[0].global_score).toBe(sampleUser.global_score + 5);
+    expect(user!.mail).toBe(1);
+    expect(user!.global_score).toBe(sampleUser.global_score + 5);
   });
 
   // Test de réinitialisation de tous les scores globaux
   it('should reset all global scores to 0', async () => {
     await createUser(sampleUser);
-    await createUser({ mail: 'second@example.com', country: 'Canada', global_score: 20 });
+    await createUser(sampleUser2);
+    await createUser(sampleUser3);
 
     await removeAllGlobalScore(); // Remet tous les scores à 0
 
