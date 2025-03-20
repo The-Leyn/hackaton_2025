@@ -1,9 +1,16 @@
 import { db } from '../lib/db';
 import { usersTable } from '../schema';
-import { eq, sql } from 'drizzle-orm';
+import { eq, sql, desc } from 'drizzle-orm';
 
 export async function createUser(userData: typeof usersTable.$inferInsert) {
   return await db.insert(usersTable).values(userData).returning();
+}
+
+export async function getTopScores(limit: number) {
+  return await db.select()
+    .from(usersTable)
+    .orderBy(desc(usersTable.global_score))
+    .limit(limit);
 }
 
 export async function updateGlobalScore(mail: string, score: number) {
